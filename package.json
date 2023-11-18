@@ -1,6 +1,6 @@
 {
   "name": "unbuild-electron-starter",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A simple electron starter project.",
   "packageManager": "pnpm@8.6.12",
   "main": "dist-electron/main/index.cjs",
