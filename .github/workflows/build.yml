@@ -84,6 +84,17 @@ jobs:
       - name: Set env
         shell: bash
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      
+      - name: Get package name
+        id: get-package-name
+        uses: actions/github-script@v3
+        with:
+          script: |
+            const packageJson = require('./package.json')
+            const packageName = packageJson.name
+            console.log(`Package name: ${packageName}`)
+            return packageName
+          result-encoding: string
 
       - name: Upload Release Asset
         id: upload-release-asset
@@ -92,8 +103,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.get_release_info.outputs.upload_url }}
-          asset_path: ./release/${{ env.RELEASE_VERSION }}/autocut-client_${{ env.RELEASE_VERSION }}.${{ matrix.FORMAT }}
-          asset_name: autocut-client_${{ env.RELEASE_VERSION }}.${{ matrix.FORMAT }}
+          asset_path: ./release/${{ env.RELEASE_VERSION }}/${{ steps.get-package-name.outputs.result }}_${{ env.RELEASE_VERSION }}.${{ matrix.FORMAT }}
+          asset_name: ${{ steps.get-package-name.outputs.result }}_${{ env.RELEASE_VERSION }}.${{ matrix.FORMAT }}
           asset_content_type: ${{ matrix.ASSET_MIME}}
 
   release:
