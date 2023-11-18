@@ -1,0 +1,50 @@
+{
+  "name": "unbuild-electron-starter-renderer",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "gitHooks": {
+    "pre-push": "npm run lint && npm run tsc && npm run test:unit run"
+  },
+  "dependencies": {
+    "@vueuse/core": "^10.6.1",
+    "animate.css": "^4.1.1",
+    "axios": "^1.6.1",
+    "hami-vuex": "^0.1.4",
+    "vue": "^3.3.8",
+    "vue-router": "^4.2.5",
+    "vuex": "^4.1.0"
+  },
+  "devDependencies": {
+    "@iconify/json": "^2.2.142",
+    "@playwright/test": "^1.39.0",
+    "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "@typescript-eslint/parser": "^6.11.0",
+    "@vitejs/plugin-legacy": "^4.1.1",
+    "@vitejs/plugin-vue": "^4.5.0",
+    "@vitest/ui": "^0.34.6",
+    "@vue/compiler-dom": "^3.3.8",
+    "@vue/compiler-sfc": "^3.3.8",
+    "@vue/test-utils": "^2.4.2",
+    "code-inspector-plugin": "^0.1.13",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-security": "^1.7.1",
+    "eslint-plugin-vue": "^9.18.1",
+    "eslint-plugin-vuejs-accessibility": "^2.2.0",
+    "happy-dom": "^12.10.3",
+    "rollup-plugin-visualizer": "^5.9.2",
+    "terser": "^5.24.0",
+    "tslib": "^2.6.2",
+    "unocss": "^0.57.4",
+    "unplugin-auto-import": "^0.16.7",
+    "unplugin-vue-components": "^0.25.2",
+    "vite": "^4.5.0",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-inspect": "^0.7.42",
+    "vue-tsc": "^1.8.22",
+    "yorkie": "^2.0.0"
+  }
+}

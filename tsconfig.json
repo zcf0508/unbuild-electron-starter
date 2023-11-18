@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "esnext",
+    "esModuleInterop": true,
+    "noEmit": true,
+    "types": [
+      "vitest/globals",
+    ],
+  },
+  "exclude": [
+    "dist-electron"
+  ]
+}

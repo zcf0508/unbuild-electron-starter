@@ -1,0 +1,42 @@
+{
+  "name": "unbuild-electron-starter",
+  "version": "0.0.0",
+  "description": "A simple electron starter project.",
+  "main": "dist-electron/main/index.cjs",
+  "scripts": {
+    "dev:renderer": "cd renderer && npm run dev",
+    "dev:main": "nodemon",
+    "build:renderer": "cd renderer && npm run build",
+    "build:preload": "cd src/preload && tsc",
+    "dev": "unbuild --stub && concurrently 'npm:dev:main' 'npm:dev:renderer'",
+    "build": "unbuild && npm run build:preload && npm run build:renderer && electron-builder",
+    "test": "vitest",
+    "lint": "eslint .",
+    "format": "eslint . --fix",
+    "release": "bumpp"
+  },
+  "keywords": [
+    "electron",
+    "vue",
+    "unbuild",
+    "vite"
+  ],
+  "author": "zcf0508 <zcf0508@live.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.9.1",
+    "bumpp": "^9.2.0",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^27.1.0",
+    "electron-builder": "^23.3.3",
+    "electron-devtools-installer": "^3.2.0",
+    "eslint": "^8.53.0",
+    "lodash-es": "^4.17.21",
+    "nodemon": "^3.0.1",
+    "type-fest": "^4.8.1",
+    "typescript": "^5.2.2",
+    "unbuild": "^2.0.0",
+    "vitest": "^0.34.6"
+  }
+}

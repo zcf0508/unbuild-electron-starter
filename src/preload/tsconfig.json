@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "../../tsconfig.json",
+  ],
+  "compilerOptions": {
+    "outDir": "../../dist-electron/preload",
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
+    "noEmit": false,
+    "noEmitHelpers": true,
+  },
+}
