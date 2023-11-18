@@ -7,9 +7,9 @@
   "directories": {
     "output": "release/v${version}"
   },
-  extraResources: {
-    from: './public/resources',
-    to: './'
+  "extraResources": {
+    "from": "./resources",
+    "to": "./"
   },
   "files": [
     "dist-electron",
