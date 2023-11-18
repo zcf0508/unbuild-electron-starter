@@ -66,7 +66,7 @@ jobs:
         uses: actions/github-script@v3
         with:
           script: |
-            const packageJson = require('./package.json')
+            const packageJson = require(`${process.env.GITHUB_WORKSPACE}/package.json`)
             const packageName = packageJson.name
             console.log(`Package name: ${packageName}`)
             return packageName
