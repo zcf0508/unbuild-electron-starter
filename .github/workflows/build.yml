@@ -8,6 +8,8 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v3
         with:
@@ -17,12 +19,14 @@ jobs:
         with:
           node-version: 16.x
 
-      - run: npx changelogithub
+      - run: npx changelogithub -d
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
   build:
     runs-on: ${{ matrix.os }}
+    permissions:
+      contents: write
 
     strategy:
       matrix:
@@ -37,18 +41,28 @@ jobs:
             ASSET_MIME: application/vnd.microsoft.portable-executable 
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
+      - name: Set git to use LF
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Set node 18
+        uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: pnpm
 
-      - name: Install Dependencies
-        run: npm install
+      - run: corepack enable
 
-      - name: Build Release Files
-        run: npm run build
+      - name: Install
+        run: pnpm i
+
+      - name: Build
+        run: pnpm run build --publish never
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

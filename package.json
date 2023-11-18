@@ -14,7 +14,7 @@
     "test": "vitest",
     "lint": "eslint .",
     "format": "eslint . --fix",
-    "release": "bumpp"
+    "release": "bumpp -r"
   },
   "keywords": [
     "electron",
