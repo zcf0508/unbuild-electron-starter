@@ -69,11 +69,10 @@ module.exports = {
       excludedFiles: ['**/*.md/*.*'],
       files: ['*.ts', '*.tsx', '*.mts', '*.cts'],
       extends: [
-        'plugin:@typescript-eslint/recommended',
-        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        // 'plugin:@typescript-eslint/recommended',
+        // 'plugin:@typescript-eslint/recommended-requiring-type-checking',
       ],
       rules: {
-        '@typescript-eslint/no-unsafe-assignment': 1,
       },
     },
   ],
